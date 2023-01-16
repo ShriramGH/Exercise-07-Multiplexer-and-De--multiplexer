@@ -47,42 +47,62 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
-
-
-
+1. Create a project with required entities.
+2. Create a module along with respective file name for both Multiplexer and De-multiplexer.
+3. Run the module and get the respective RTL outputs.
+4. Create university program(VWF) for getting timing diagram.
+5. Give the respective inputs for timing diagram and obtain the results.
 ### PROGRAM 
-/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
 
+Developed by: Ronick Aakshath P
 
+RegisterNumber: 22007303
 
+### 4-1 Multiplexer
+```
+module mux(i0, i1, i2, i3, s0, s1, y);
+input i0, i1, i2, i3, s0, s1;
+output y;
+not(s0c, s0);
+nor(s1c, s1);
+wire p, q, r, s, s0c, s1c;
+and(p, s0c, s1c, i0);
+and(q, s0c, s1, i1);
+and(r, s0, s1c, i2);
+and(s, s0, s1, i3);
+or(y, p, q, r, s);
+endmodule
+```
 
-
-
-### RTL LOGIC  
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS  
-
-
-
-
-
+### 1-4 Demultiplexer
+```
+module demux(y0, y1, y2, y3, s0, s1, i);
+input s0, s1, i;
+output y0, y1, y2, y3;
+wire s0c, s1c;
+nor(s0c, s0);
+nor(s1c, s1);
+and(y0, i, s0c, s1);
+and(y1, i, s0c, s1c);
+and(y2, i, s0, s1c);
+and(y3, i, s0, s1);
+endmodule
+```
+### RTL LOGIC 
+### Multiplexer RTL 
+![](mux_rtl.png)
+### Demultiplexer RTL 
+![](demux_rtl.png)
+### TIMING DIAGRAMS  
+### Multiplexer Timing Diagram
+![](mux_td.png)
+### Demultiplexer Timing Diagram
+![](demux_td.png)
 ### TRUTH TABLE 
-
-
-
-
-
-
+### Multiplexer Truth Table
+![](mux_tt.png)
+### Demultiplexer Truth Table
+![](demux_tt.png)
 ### RESULTS 
+Thus the implementation of Multiplexer and Demultiplexer are verified
